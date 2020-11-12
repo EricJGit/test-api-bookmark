@@ -1,0 +1,17 @@
+default:
+    calls:
+        error_reporting: 16383 # E_ALL & ~E_USER_DREPRECATED
+    suites:
+        default:
+            paths: [ ./tests/functional/features ]
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - Behatch\Context\JsonContext
+                - Behatch\Context\RestContext
+    extensions:
+        Behat\MinkExtension:
+            base_url: "http://nginx:8080"
+            sessions:
+                default:
+                    goutte: ~
+        Behatch\Extension: ~
